@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Vault</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="loginPage" class="page active">
+        <div class="login-card">
+            <div class="lock-icon">🔐</div>
+            <h1>My Personal Vault</h1>
+            <p class="subtitle">Your private digital storage</p>
+
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email"
+                       autocomplete="username" required>
+                <input type="password" id="password" placeholder="Password"
+                       autocomplete="current-password" required>
+                <button type="submit" id="loginButton">🔓 Unlock Vault</button>
+            </form>
+            <p id="loginMessage" role="status"></p>
+        </div>
+    </section>
+
+    <section id="vaultPage" class="page">
+        <header class="vault-header">
+            <div>
+                <h1>🔐 My Personal Vault</h1>
+                <p>Private • Secure • Personal</p>
+            </div>
+            <button id="logoutButton" class="logout-btn">Logout</button>
+        </header>
+
+        <main class="vault-content">
+            <div class="welcome-card">
+                <h2>Welcome to your Vault 👋</h2>
+                <p id="userEmail"></p>
+            </div>
+
+            <div class="upload-card">
+                <h2>📤 Upload files</h2>
+                <p>Select a category and choose one or more files.</p>
+
+                <label for="categorySelect">Category</label>
+                <select id="categorySelect">
+                    <option value="Photos">📸 Photos</option>
+                    <option value="Documents">📄 Documents</option>
+                    <option value="Personal">🔒 Personal</option>
+                </select>
+
+                <label for="fileInput">Select files</label>
+                <input type="file" id="fileInput" multiple>
+
+                <button id="uploadButton" class="upload-btn">
+                    📤 Upload selected files
+                </button>
+                <p id="uploadMessage" role="status"></p>
+            </div>
+
+            <div class="categories">
+                <div class="category-card">
+                    <div class="category-icon">📸</div>
+                    <h2>Photos</h2>
+                    <p>Photo gallery</p>
+                    <button data-category="Photos">Open Gallery</button>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">📄</div>
+                    <h2>Documents</h2>
+                    <p>Important documents</p>
+                    <button data-category="Documents">Open Documents</button>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🔒</div>
+                    <h2>Personal</h2>
+                    <p>Private files</p>
+                    <button data-category="Personal">Open Personal</button>
+                </div>
+            </div>
+
+            <section id="fileSection" class="file-section" hidden>
+                <div class="file-section-header">
+                    <h2 id="fileSectionTitle">Your files</h2>
+                    <button id="closeFilesButton">✕ Close</button>
+                </div>
+                <div id="fileList"></div>
+            </section>
+        </main>
+    </section>
+
+    <div id="photoViewer" class="photo-viewer" hidden>
+        <button id="viewerCloseButton" class="viewer-close"
+                aria-label="Close photo">✕</button>
+        <img id="viewerImage" alt="Selected vault photo">
+    </div>
+
+    <!-- Load Supabase before our own script -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
